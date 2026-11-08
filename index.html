@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TastyBites | Restaurant & Takeaway in Lusaka</title>
+<meta name="description" content="Order fresh burgers, pizzas and grills from TastyBites. Delivered across Lusaka. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js" defer></script>
+<script src="js/menu.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav container" aria-label="Main">
+    <a href="#home" class="logo"><i data-lucide="chef-hat"></i><span>Tasty<b>Bites</b></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#delivery">Delivery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn cart-btn" id="openCart" aria-label="Open cart"><i data-lucide="shopping-cart"></i><span class="badge" id="cartCount">0</span></button>
+      <a href="#menu" class="btn btn-primary nav-order">Order Now <i data-lucide="arrow-right"></i></a>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><i data-lucide="menu"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="pill"><i data-lucide="utensils"></i> Good Food. Great Mood.</span>
+      <h1>Delicious Meals.<br>Right at <span class="accent">Your Door.<svg class="swoosh" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q100 -3 198 6" fill="none" stroke="#FF6900" stroke-width="3" stroke-linecap="round"/></svg></span></h1>
+      <p class="lead">Enjoy fresh, tasty meals from TastyBites. Order online and get your favourite food delivered fast.</p>
+      <div class="hero-cta">
+        <a href="#menu" class="btn btn-primary btn-lg">Order Now <i data-lucide="arrow-right"></i></a>
+        <a href="#" class="btn btn-outline btn-lg" data-wa-chat target="_blank" rel="noopener"><i data-lucide="message-circle"></i> Chat on WhatsApp</a>
+      </div>
+      <ul class="benefits">
+        <li><i data-lucide="truck"></i> Fast Delivery</li>
+        <li><i data-lucide="shield-check"></i> Secure Payments</li>
+        <li><i data-lucide="star"></i> Great Taste</li>
+      </ul>
+    </div>
+  </div>
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1400&q=80" alt="Grilled chicken served with rice and fresh vegetables" fetchpriority="high"></div>
+</section>
+
+<section class="section overview" id="menu">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="menu-col">
+        <div class="section-head">
+          <h2><span class="bar"></span>Our Menu</h2>
+          <button class="text-link" id="viewFullMenu">View Full Menu <i data-lucide="arrow-right"></i></button>
+        </div>
+        <div class="cat-grid" id="categoryGrid"></div>
+      </div>
+      <article class="card delivery-card" id="delivery">
+        <div class="card-title"><i data-lucide="map-pin"></i><div><h3>Delivery Zones</h3><p class="muted">We deliver in:</p></div></div>
+        <svg class="map" viewBox="0 0 200 180" aria-hidden="true"><path d="M20 70 Q35 20 90 25 Q150 15 175 60 Q190 110 150 150 Q100 175 55 150 Q10 125 20 70Z" fill="#FFEEDD"/><circle cx="100" cy="90" r="34" fill="none" stroke="#FF6900" stroke-opacity=".3" stroke-dasharray="4 4"/><circle cx="100" cy="90" r="7" fill="#FF6900"/><circle cx="100" cy="90" r="2.5" fill="#fff"/></svg>
+        <ul class="zones" id="zoneList"></ul>
+        <button class="btn btn-outline" id="checkAreaBtn">Check Your Area <i data-lucide="arrow-right"></i></button>
+      </article>
+      <article class="card hours-card">
+        <div class="card-title"><i data-lucide="clock"></i><h3>Opening Hours</h3></div>
+        <p class="days">Monday – Sunday</p>
+        <p class="hours">08:00 AM – 10:00 PM</p>
+        <p class="status" id="openStatus"><span class="dot"></span><span id="openText">Checking…</span></p>
+        <p class="tagline">Always here to serve you!</p>
+      </article>
+    </div>
+    <div class="menu-tools">
+      <p class="muted" id="menuStatus">Showing all meals</p>
+      <label class="search"><i data-lucide="search"></i><input type="search" id="menuSearch" placeholder="Search meals" aria-label="Search meals"></label>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<section class="section tight" id="order">
+  <div class="container">
+    <div class="order-banner">
+      <div class="phone" aria-hidden="true"><i data-lucide="chef-hat"></i><span>Tasty<b>Bites</b></span></div>
+      <div class="order-text"><h2>Order Easily, Your Way!</h2><p>Use WhatsApp or Mobile Money to place your order.</p></div>
+      <span class="vr"></span>
+      <button class="btn btn-wa btn-lg" id="bannerWa"><i data-lucide="message-circle"></i> Order on WhatsApp</button>
+      <span class="vr"></span>
+      <div class="momo-wrap">
+        <button class="momo-pay" id="bannerMomo"><i data-lucide="smartphone"></i> Pay with Mobile Money</button>
+        <span class="mtn"><b>MTN</b>MoMo</span><span class="airtel"><b>airtel</b>money</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="gallery">
+  <div class="container">
+    <div class="section-head"><h2><span class="bar"></span>Food Gallery</h2></div>
+    <div class="gallery" id="galleryGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about-grid">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=75" alt="Inside a warm, busy restaurant" loading="lazy">
+    <div>
+      <h2>Good Food, Made with Passion.</h2>
+      <p class="lead">TastyBites started with a simple idea: serve the kind of meal you would be proud to share with family, and get it to you while it is still hot.</p>
+      <ul class="about-list">
+        <li><i data-lucide="leaf"></i><div><b>Fresh ingredients</b><span>Bought daily from local suppliers.</span></div></li>
+        <li><i data-lucide="award"></i><div><b>Quality food</b><span>Cooked to order, never reheated.</span></div></li>
+        <li><i data-lucide="heart-handshake"></i><div><b>Great customer service</b><span>Real people answer your WhatsApp messages.</span></div></li>
+        <li><i data-lucide="truck"></i><div><b>Fast, reliable delivery</b><span>Riders covering seven Lusaka areas.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <h2>Get in Touch</h2>
+      <p class="lead">Questions, catering or feedback? We reply fast.</p>
+      <ul class="contact-list">
+        <li><i data-lucide="phone"></i><a href="tel:+260970000000">+260 970 000 000</a></li>
+        <li><i data-lucide="message-circle"></i><a href="#" data-wa-chat target="_blank" rel="noopener">WhatsApp us</a></li>
+        <li><i data-lucide="mail"></i><a href="mailto:hello@tastybites.example">hello@tastybites.example</a></li>
+        <li><i data-lucide="map-pin"></i><span>Plot 123, Cairo Road, Lusaka</span></li>
+      </ul>
+      <div class="socials"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a></div>
+    </div>
+    <form class="card form" id="contactForm" novalidate>
+      <label>Name<input name="name" autocomplete="name"><small class="error"></small></label>
+      <label>Email<input name="email" type="email" autocomplete="email"><small class="error"></small></label>
+      <label>Message<textarea name="message" rows="4"></textarea><small class="error"></small></label>
+      <button class="btn btn-primary" type="submit">Send Message</button>
+      <p class="form-note" id="contactNote" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><a href="#home" class="logo light"><i data-lucide="chef-hat"></i><span>Tasty<b>Bites</b></span></a><p>Fresh burgers, pizzas and grills, cooked to order and delivered across Lusaka.</p></div>
+    <div><h4>Explore</h4><ul><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#delivery">Delivery</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>+260 970 000 000</li><li>hello@tastybites.example</li><li>Plot 123, Cairo Road, Lusaka</li></ul></div>
+    <div><h4>Opening hours</h4><ul><li>Mon – Sun</li><li>08:00 AM – 10:00 PM</li></ul>
+      <div class="socials"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a></div></div>
+  </div>
+  <p class="copy">© <span id="year">2026</span> TastyBites. All rights reserved.</p>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+  <header><h2>Your cart</h2><button class="icon-btn" id="closeCart" aria-label="Close cart"><i data-lucide="x"></i></button></header>
+  <div class="cart-items" id="cartItems"></div>
+  <footer>
+    <div class="total-row"><span>Total</span><strong id="cartTotal">K0</strong></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn">Checkout</button>
+    <button class="link-btn" id="clearCart">Clear cart</button>
+  </footer>
+</aside>
+
+<dialog id="checkoutModal">
+  <form id="checkoutForm" novalidate>
+    <header><h2>Checkout</h2><button type="button" class="icon-btn" data-close aria-label="Close"><i data-lucide="x"></i></button></header>
+    <div class="summary" id="checkoutSummary"></div>
+    <label>Name<input name="name" autocomplete="name"><small class="error"></small></label>
+    <label>Phone number<input name="phone" type="tel" placeholder="097 000 0000" autocomplete="tel"><small class="error"></small></label>
+    <label>Delivery area<select name="area"></select><small class="error"></small></label>
+    <label>Delivery address<input name="address" placeholder="House number, street, landmark"><small class="error"></small></label>
+    <label>Order instructions (optional)<textarea name="notes" rows="2"></textarea></label>
+    <button class="btn btn-wa btn-block" type="submit"><i data-lucide="message-circle"></i> Confirm Order on WhatsApp</button>
+    <p class="form-note">Your order is only placed once you send the message in WhatsApp.</p>
+  </form>
+</dialog>
+
+<dialog id="areaModal">
+  <div class="modal-body">
+    <header><h2>Check your area</h2><button class="icon-btn" data-close aria-label="Close"><i data-lucide="x"></i></button></header>
+    <label>Type or choose your area<input id="areaInput" list="areaList" placeholder="e.g. Kabulonga"></label>
+    <datalist id="areaList"></datalist>
+    <button class="btn btn-primary btn-block" id="areaCheck">Check</button>
+    <p class="area-result" id="areaResult" role="status"></p>
+  </div>
+</dialog>
+
+<dialog id="momoModal">
+  <div class="modal-body">
+    <header><h2>Pay with Mobile Money</h2><button class="icon-btn" data-close aria-label="Close"><i data-lucide="x"></i></button></header>
+    <p>We accept MTN MoMo and Airtel Money. Place your order on WhatsApp and we will reply with the number to pay and your total.</p>
+    <p class="muted">This website does not process payments.</p>
+    <button class="btn btn-wa btn-block" id="momoOrder"><i data-lucide="message-circle"></i> Order on WhatsApp</button>
+  </div>
+</dialog>
+
+<dialog id="lightbox"><button class="icon-btn lb-close" data-close aria-label="Close preview"><i data-lucide="x"></i></button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
